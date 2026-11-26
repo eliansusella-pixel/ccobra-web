@@ -420,6 +420,112 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
 #intro .iw small{font-family:var(--display);font-weight:500;font-size:clamp(10px,1.6vw,15px);letter-spacing:.56em;color:var(--gris);margin-right:-.56em}
 #intro .bar{width:180px;height:2px;background:#2A3A5A;overflow:hidden}
 #intro .bar i{display:block;height:100%;width:100%;background:var(--verde);transform-origin:left;transform:scaleX(0)}
+
+/* HERO ESCRITORIO */
+.hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}
+.hero h1{font-size:clamp(40px,4.4vw,72px)}
+.float-card{bottom:96px}
+
+/* GALERÍA DE OBRAS */
+.obras-head{display:flex;justify-content:space-between;align-items:baseline;margin:56px 0 18px}
+.obras-head h3{font-size:clamp(22px,2.4vw,28px)}
+.obras-hint{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--lbl)}
+.obras-strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.obras-strip figure{flex:0 0 auto;width:clamp(210px,24vw,300px);margin:0;scroll-snap-align:start;position:relative;border-radius:6px;overflow:hidden;aspect-ratio:3/4;background:var(--bg)}
+.obras-strip img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.obras-strip figure:hover img{transform:scale(1.04)}
+.obras-strip figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 14px 12px;font-size:13px;font-weight:500;line-height:1.3;color:#fff;background:linear-gradient(to top,rgba(10,18,36,.85),transparent)}
+
+/* MENÚ CELULAR */
+.burger{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--rule);background:transparent;color:var(--ink);cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px;padding:0}
+.burger i{display:block;width:18px;height:1.6px;background:currentColor;border-radius:2px;transition:transform .3s,opacity .3s}
+.burger[aria-expanded="true"] i:nth-child(1){transform:translateY(6.6px) rotate(45deg)}
+.burger[aria-expanded="true"] i:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] i:nth-child(3){transform:translateY(-6.6px) rotate(-45deg)}
+.mnav{position:fixed;inset:0;z-index:49;background:var(--bg);padding:calc(88px + env(safe-area-inset-top,0px)) 24px calc(28px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:2px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .3s,transform .3s,visibility 0s .3s}
+.mnav.open{opacity:1;visibility:visible;transform:none;transition:opacity .3s,transform .3s}
+.mnav a{font-family:var(--display);font-stretch:112%;font-weight:700;font-size:28px;letter-spacing:-.01em;text-decoration:none;padding:12px 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;color:var(--ink)}
+.mnav a::after{content:"→";font-size:20px;color:var(--lbl)}
+.mnav a.btn{margin-top:auto;justify-content:center;font-size:14px;border:0;padding:0 26px;color:var(--btn-fg);min-height:54px}
+.mnav a.btn::after{content:none}
+html.menu-open,html.menu-open body{overflow:hidden}
+.wa-bar{display:none}
+
+@media (max-width:900px){
+  .burger{display:flex}
+}
+@media (max-width:760px){
+  html,body{overflow-x:clip}
+  body{font-size:15.5px}
+  section{padding-block:64px}
+  .nav .wrap{min-height:64px;gap:12px}
+  .nav-right{gap:10px}
+  .brand svg{width:34px;height:34px}
+  .brand b{font-size:19px}
+  .theme-btn,.burger{width:40px;height:40px}
+  h2{font-size:clamp(28px,8.4vw,36px);line-height:1.06}
+  .vol{font-size:10.5px;letter-spacing:.2em}
+  mark.kw{white-space:normal}
+  .sec-head{margin-bottom:32px;gap:14px}
+  /* hero */
+  .hero{padding-block:24px 56px}
+  .hero h1{font-size:clamp(31px,10.2vw,44px);font-stretch:104%;letter-spacing:-.025em;line-height:1;margin:16px 0 18px}
+  .hero .lead{font-size:16px}
+  .hero .btns{flex-direction:column;gap:10px;margin-top:26px}
+  .hero .btns .btn{justify-content:center;width:100%;min-height:52px}
+  .ticks{flex-direction:column;gap:10px;margin-top:28px;padding-top:20px}
+  .hero-photo{aspect-ratio:1/1;max-height:none}
+  .float-card{position:relative;left:auto;bottom:auto;margin:-36px 14px 0;max-width:none;padding:16px 18px;z-index:2}
+  .paint-hint{flex-direction:column;align-items:flex-start;gap:4px;font-size:13px}
+  /* diferencial */
+  .dif-head h2{font-size:clamp(32px,9.6vw,42px)}
+  .dif-item{padding:20px 0 22px}
+  /* servicios */
+  .serv-grid{gap:10px}
+  .serv{min-height:0;padding:22px 20px;flex-direction:row;align-items:flex-start;justify-content:flex-start;gap:16px}
+  .serv .ic{width:48px;height:48px;flex-shrink:0}
+  .serv .ic svg{width:22px;height:22px}
+  .serv h3{font-size:19px}
+  .serv p{font-size:14px;margin-top:6px}
+  /* banda */
+  .band{height:340px}
+  .band h2{font-size:clamp(28px,8.4vw,36px)}
+  /* método */
+  .met-grid{gap:26px}
+  .step .n{font-size:42px}
+  /* trabajos */
+  .trab-grid{grid-auto-rows:250px;gap:10px}
+  .tile figcaption b{font-size:19px}
+  .trab-grid .tile{grid-column:auto!important;grid-row:auto!important}
+  .obras-head{margin-top:40px}
+  .obras-strip{margin-inline:-20px;padding-inline:20px;scroll-padding-inline:20px}
+  .obras-strip figure{width:68vw}
+  /* zonas */
+  .zrow{padding:18px 0;gap:4px 14px}
+  .zrow b{font-size:20px}
+  .map3{height:300px}
+  .rings-row .ring-btn{padding:8px 14px}
+  /* nosotros */
+  .quote{font-size:clamp(24px,7.4vw,32px)}
+  .person{padding:22px}
+  /* contacto */
+  .cta{min-height:0}
+  .cta .wrap{gap:32px}
+  .cta h2{font-size:clamp(30px,9vw,40px)}
+  .cta p{font-size:16px}
+  .coat-steps{display:none!important}
+  .chip{min-height:44px}
+  .builder .btn-wa{width:100%;justify-content:center;min-height:54px}
+  footer{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
+  /* barra fija */
+  .wa-bar{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:48;align-items:center;justify-content:center;gap:10px;min-height:54px;border-radius:40px;background:#1FA855;color:#fff;font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;box-shadow:0 14px 30px -10px rgba(10,18,36,.55);transition:transform .35s cubic-bezier(.2,.7,.2,1),opacity .35s}
+  .wa-bar.off{transform:translateY(140%);opacity:0;pointer-events:none}
+  html.menu-open .wa-bar{opacity:0;pointer-events:none}
+  #trail,#brush{display:none!important}
+}
+@media (max-width:380px){
+  .brand small{letter-spacing:.36em}
+}
 </style>
 
 <script>try{if(!sessionStorage.getItem('cc-intro'))document.documentElement.classList.add('js-intro')}catch(e){document.documentElement.classList.add('js-intro')}</script>
@@ -452,9 +558,11 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
 
 <button type="button" class="theme-btn" id="themebtn" aria-label="Cambiar a modo oscuro"><svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"></path></svg><svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"></path></svg></button>
 <a class="btn btn-main" href="#contacto">Presupuesto</a>
+<button type="button" class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mnav"><i></i><i></i><i></i></button>
 </div>
 </div>
 </header>
+<nav class="mnav" id="mnav" aria-label="Menú"><a href="#diferencial">Por qué Cuenca</a><a href="#servicios">Servicios</a><a href="#metodo">Método</a><a href="#trabajos">Trabajos</a><a href="#zonas">Cobertura</a><a href="#nosotros">Nosotros</a><a class="btn btn-main" href="#contacto">Pedí tu presupuesto</a></nav>
 
 <main id="inicio">
 
@@ -471,14 +579,14 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
 <div class="ticks" data-h><span>Obra civil, instalaciones y terminaciones</span><span>Presupuesto claro y atención directa</span><span>CABA + Zona Norte</span></div>
 </div>
 <div class="hero-media">
-<div class="hero-photo" id="hphoto"><div class="ph-in" id="phin"><img id="beforeimg" src="img/antes.jpg" alt="El mismo living en obra gris, antes de la refacción"><canvas id="paintcv" aria-hidden="true"></canvas></div><span class="ad-chip" id="adchip">Obra gris</span></div>
+<div class="hero-photo" id="hphoto"><div class="ph-in" id="phin"><img id="beforeimg" src="img/obras/fachada-antes.jpg" alt="Fachada de un edificio en obra, con andamios" fetchpriority="high"><canvas id="paintcv" aria-hidden="true"></canvas></div><span class="ad-chip" id="adchip">En obra</span></div>
 <svg class="crop tl" viewBox="0 0 24 24" aria-hidden="true"><path d="M1 23V1h22"></path></svg><svg class="crop tr" viewBox="0 0 24 24" aria-hidden="true"><path d="M1 23V1h22"></path></svg><svg class="crop br" viewBox="0 0 24 24" aria-hidden="true"><path d="M1 23V1h22"></path></svg><svg class="crop bl" viewBox="0 0 24 24" aria-hidden="true"><path d="M1 23V1h22"></path></svg>
 <div class="dim" aria-hidden="true"><i>DIRECCIÓN DE OBRA</i></div>
 <div class="float-card" id="fcard">
 <svg width="44" height="44" viewBox="0 0 64 64" aria-hidden="true"><polygon points="17,21 33,11 33,37 17,47" fill="#2E4C80"></polygon><polygon points="17,47 34,47 50,37 33,37" fill="#839FB5"></polygon><polygon points="10,14 26,4 50,4 34,14" fill="#47A6B5"></polygon><polygon points="34,14 50,4 50,11 34,21" fill="#4760B5"></polygon><polygon points="34,47 50,37 50,44 34,54" fill="#4760B5"></polygon><path d="M10 14 H34 V21 H17 V47 H34 V54 H10 Z" fill="#4682B4"></path></svg>
 <div><b>Un responsable en cada obra</b><span>Del relevamiento a la entrega, con seguimiento directo.</span></div>
 </div>
-<div class="paint-hint" id="phint"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4l6 6-6.5 6.5-6-6z"></path><path d="M7.5 10.5L5 13c-1.5 1.5-1 3.5-2 5.5 2-1 4-.5 5.5-2l2.5-2.5"></path></svg>Pintá la foto con el pincel o bajá para ver la obra terminada. Pasalo también por las palabras subrayadas.</span><button type="button" id="revealbtn">Ver terminado</button></div>
+<div class="paint-hint" id="phint"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4l6 6-6.5 6.5-6-6z"></path><path d="M7.5 10.5L5 13c-1.5 1.5-1 3.5-2 5.5 2-1 4-.5 5.5-2l2.5-2.5"></path></svg>Pintá la foto para ver la misma fachada terminada. Obra real de Cuenca.</span><button type="button" id="revealbtn">Ver terminado</button></div>
 </div>
 </div>
 </section>
@@ -506,7 +614,7 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
 </section>
 
 <section class="band" aria-label="Orden de obra">
-<img id="bandimg" src="img/obra.jpg" alt="Responsable de obra entre perfiles de acero">
+<img id="bandimg" src="img/obras/obra-mamposteria.jpg" alt="Equipo de Cuenca trabajando en mampostería" loading="lazy">
 <div class="wrap"><span class="vol" style="color:#D7F0EA">Dirección de obra</span><h2 style="margin-top:16px" data-rv>Orden de obra desde la primera consulta.</h2></div>
 </section>
 
@@ -530,12 +638,12 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
 <div class="wrap">
 <div class="sec-head"><span class="vol" data-rv>Trabajos</span><h2 data-rv>Rubros y trabajos realizados.</h2></div>
 <div class="trab-grid">
-<figure class="tile big" data-rv style="margin:0"><img src="img/fachada.jpg" alt="Fachada de una vivienda contemporánea"><figcaption><small>Obras desde cero</small><b>Vivienda con rubros coordinados</b></figcaption></figure>
-<figure class="tile" data-rv style="margin:0"><img src="img/bano.jpg" alt="Baño renovado con ducha de vidrio"><figcaption><small>Plomería</small><b>Baño completo</b></figcaption></figure>
-<figure class="tile" data-rv style="margin:0"><img src="img/detalle.jpg" alt="Colocación de porcellanato con nivel"><figcaption><small>Revestimientos</small><b>Nivelación y detalle</b></figcaption></figure>
-<figure class="tile" data-rv style="margin:0;grid-column:span 2"><img src="img/living.jpg" alt="Living de un PH refaccionado" style="object-position:center 60%"><figcaption><small>Refacciones generales</small><b>Refacción integral sin dividir proveedores</b></figcaption></figure>
+<figure class="tile big" data-rv style="margin:0"><img src="img/obras/casa-pileta.jpg" alt="Vivienda con pileta terminada" loading="lazy"><figcaption><small>Obras desde cero</small><b>Vivienda y pileta, rubros coordinados</b></figcaption></figure>
+<figure class="tile" data-rv style="margin:0"><img src="img/obras/pintura-exterior.jpg" alt="Casa con pintura exterior renovada" loading="lazy"><figcaption><small>Pintura</small><b>Pintura exterior completa</b></figcaption></figure>
+<figure class="tile" data-rv style="margin:0"><img src="img/obras/piso-madera-luz.jpg" alt="Ambiente con piso de madera e iluminación" loading="lazy"><figcaption><small>Terminaciones</small><b>Pisos e iluminación</b></figcaption></figure>
+<figure class="tile" data-rv style="margin:0;grid-column:span 2"><img src="img/obras/pileta-obra.jpg" alt="Pileta y patio en construcción" loading="lazy" style="object-position:center 60%"><figcaption><small>Obra en curso</small><b>Pileta y patio, de cero a la entrega</b></figcaption></figure>
 </div>
-<p class="note">Imágenes de referencia para la beta. En la web final van fotos y videos de obras propias.</p>
+<div class="obras-head"><h3>Más obras recientes</h3><span class="obras-hint">Deslizá →</span></div><div class="obras-strip" aria-label="Fotos de obras reales"><figure><img src="img/obras/g01.jpg" alt="Piso de madera y techo de machimbre" loading="lazy"><figcaption>Piso de madera y techo de machimbre</figcaption></figure><figure><img src="img/obras/g02.jpg" alt="Ambiente terminado con piso de madera" loading="lazy"><figcaption>Ambiente terminado con piso de madera</figcaption></figure><figure><img src="img/obras/g03.jpg" alt="Revestimiento de fachada en altura" loading="lazy"><figcaption>Revestimiento de fachada en altura</figcaption></figure><figure><img src="img/obras/g04.jpg" alt="Pintura de fachada" loading="lazy"><figcaption>Pintura de fachada</figcaption></figure><figure><img src="img/obras/g05.jpg" alt="Vivienda terminada con jardín" loading="lazy"><figcaption>Vivienda terminada con jardín</figcaption></figure><figure><img src="img/obras/g06.jpg" alt="Vivienda de dos plantas" loading="lazy"><figcaption>Vivienda de dos plantas</figcaption></figure><figure><img src="img/obras/g07.jpg" alt="Quincho y parrilla" loading="lazy"><figcaption>Quincho y parrilla</figcaption></figure><figure><img src="img/obras/g08.jpg" alt="Fachada con revestimiento de piedra" loading="lazy"><figcaption>Fachada con revestimiento de piedra</figcaption></figure><figure><img src="img/obras/g09.jpg" alt="Colocación de adoquines" loading="lazy"><figcaption>Colocación de adoquines</figcaption></figure><figure><img src="img/obras/g10.jpg" alt="Piso cerámico decorativo" loading="lazy"><figcaption>Piso cerámico decorativo</figcaption></figure><figure><img src="img/obras/g11.jpg" alt="Construcción de muro de pileta" loading="lazy"><figcaption>Construcción de muro de pileta</figcaption></figure><figure><img src="img/obras/g12.jpg" alt="Ampliación en jardín" loading="lazy"><figcaption>Ampliación en jardín</figcaption></figure><figure><img src="img/obras/g13.jpg" alt="Fachada con andamios" loading="lazy"><figcaption>Fachada con andamios</figcaption></figure><figure><img src="img/obras/g14.jpg" alt="Colocación de puerta de entrada" loading="lazy"><figcaption>Colocación de puerta de entrada</figcaption></figure></div><p class="note">Todas las fotos son de obras realizadas por Cuenca Construcciones.</p>
 </div>
 </section>
 
@@ -709,9 +817,9 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
   /* ---------- hero: paint the finished room over the raw one ---------- */
   const cv=document.getElementById('paintcv'), pctx=cv.getContext('2d');
   const mask=document.createElement('canvas'), mctx=mask.getContext('2d');
-  const after=new Image(); after.src='img/living.jpg';
+  const after=new Image(); after.src='img/obras/fachada-despues-al.jpg';
   const beforeImg=document.getElementById('beforeimg');
-  beforeImg.addEventListener('error',()=>{beforeImg.src='img/living.jpg';beforeImg.style.filter='grayscale(1) contrast(.75) brightness(1.08) blur(1px)';},{once:true});
+  beforeImg.addEventListener('error',()=>{beforeImg.src='img/obras/fachada-despues-al.jpg';beforeImg.style.filter='grayscale(1) contrast(.75) brightness(1.08) blur(1px)';},{once:true});
   let revealed=false, cw=0, ch=0;
   function sizeHero(){const r=cv.getBoundingClientRect();if(!r.width)return;const old=cw?mask:null;
     let keep=null;if(old){keep=document.createElement('canvas');keep.width=mask.width;keep.height=mask.height;keep.getContext('2d').drawImage(mask,0,0);}
@@ -729,8 +837,8 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
   function finish(){if(revealed)return;revealed=true;const o={a:0};
     gsap.to(o,{a:1,duration:0.9,ease:'power2.inOut',onUpdate:()=>{mctx.globalAlpha=0.25;mctx.fillStyle='#000';mctx.fillRect(0,0,mask.width,mask.height);mctx.globalAlpha=1;render();},onComplete:()=>{mctx.fillRect(0,0,mask.width,mask.height);render();}});
     const chip=document.getElementById('adchip');chip.textContent='Terminado';chip.classList.add('done');
-    document.getElementById('revealbtn').textContent='Volver a obra gris';}
-  function resetPaint(){revealed=false;mctx.clearRect(0,0,mask.width,mask.height);render();const chip=document.getElementById('adchip');chip.textContent='Obra gris';chip.classList.remove('done');document.getElementById('revealbtn').textContent='Ver terminado';}
+    document.getElementById('revealbtn').textContent='Volver a la obra';}
+  function resetPaint(){revealed=false;mctx.clearRect(0,0,mask.width,mask.height);render();const chip=document.getElementById('adchip');chip.textContent='En obra';chip.classList.remove('done');document.getElementById('revealbtn').textContent='Ver terminado';}
   cv.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();const p={x:e.clientX-r.left,y:e.clientY-r.top};
     if(e.pointerType==='mouse'||e.buttons){if(plast)paintMask(plast.x,plast.y,p.x,p.y,Math.max(60,cw*0.13));plast=p;
       if(!revealed&&performance.now()-checkT>350){checkT=performance.now();if(coverage()>0.58)finish();}}});
@@ -784,7 +892,7 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
 
   /* ---------- contact: three coats of paint as you reach the end ---------- */
   (function(){
-    const sec=document.querySelector('.cta'),cvs=document.getElementById('coats');if(!sec||!cvs)return;
+    const sec=document.querySelector('.cta'),cvs=document.getElementById('coats');if(!sec||!cvs)return;if(window.matchMedia('(max-width:760px)').matches){cvs.style.display='none';return;}
     sec.classList.add('paintable');
     const ctx=cvs.getContext('2d'),steps=[...sec.querySelectorAll('.coat-steps span')],wrap=document.getElementById('ctawrap');
     const COATS=['#839FB5','#4760B5','#4682B4'];let W2=0,H2=0,plan=[];
@@ -1020,4 +1128,13 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
 })();
 </script>
 
+<a class="wa-bar off" id="wabar" href="https://wa.me/5491164499671?text=Hola%2C%20vengo%20del%20sitio%20web%20y%20quiero%20pedir%20un%20presupuesto." target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.5 4c1.7.7 2.4.8 3.2.6a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>Pedí tu presupuesto</a>
+<script>(function(){var b=document.getElementById('burger'),m=document.getElementById('mnav'),h=document.documentElement;
+function set(o){b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú');m.classList.toggle('open',o);h.classList.toggle('menu-open',o);var n=document.getElementById('nav');if(n)n.classList.remove('hide');}
+b.addEventListener('click',function(){set(b.getAttribute('aria-expanded')!=='true')});
+m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false)})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)});
+var w=document.getElementById('wabar'),c=document.getElementById('contacto'),hero=document.querySelector('.hero'),inC=false,inH=true;
+function upd(){w.classList.toggle('off',inC||inH)}
+if('IntersectionObserver' in window){new IntersectionObserver(function(e){inC=e[0].isIntersecting;upd()},{threshold:.15}).observe(c);new IntersectionObserver(function(e){inH=e[0].isIntersecting;upd()},{rootMargin:'-60% 0px 0px 0px'}).observe(hero)}else{w.classList.remove('off')}})();</script>
 </body></html>
