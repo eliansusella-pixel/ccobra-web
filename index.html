@@ -422,9 +422,7 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
 #intro .bar i{display:block;height:100%;width:100%;background:var(--verde);transform-origin:left;transform:scaleX(0)}
 
 /* HERO ESCRITORIO */
-.hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}
-.hero h1{font-size:clamp(40px,4.4vw,72px)}
-.float-card{bottom:96px}
+@media (min-width:901px){.hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}.hero h1{font-size:clamp(40px,4.4vw,72px)}.float-card{bottom:96px}}
 
 /* GALERÍA DE OBRAS */
 .obras-head{display:flex;justify-content:space-between;align-items:baseline;margin:56px 0 18px}
@@ -525,6 +523,35 @@ html.menu-open,html.menu-open body{overflow:hidden}
 }
 @media (max-width:380px){
   .brand small{letter-spacing:.36em}
+}
+
+/* REPASO CELULAR 2 */
+.only-mob{display:none}
+@media (max-width:760px){
+  .only-desk{display:none}.only-mob{display:inline}
+  .dif-list{gap:0}
+  .dif-item{display:grid;grid-template-columns:40px 1fr;column-gap:14px;row-gap:4px;padding:18px 0 20px}
+  .dif-item svg{grid-row:1/span 2;width:30px;height:30px;margin-top:2px}
+  .dif-item h3{font-size:18px}
+  .dif-item p{font-size:14.5px}
+  .step{display:grid;grid-template-columns:58px 1fr;column-gap:12px;row-gap:4px;align-items:start}
+  .step .n{grid-row:1/span 2;font-size:40px;line-height:.95}
+  .step h3{font-size:18px}
+  .met-line{display:none}
+  .trab-grid{grid-template-columns:1fr 1fr!important;grid-auto-rows:190px!important;gap:8px!important}
+  .trab-grid .tile:first-child,.trab-grid .tile:last-child{grid-column:span 2!important}
+  .trab-grid .tile:first-child{grid-row:span 1!important}
+  .tile figcaption{left:14px;right:14px;bottom:12px;gap:3px}
+  .tile figcaption small{font-size:9.5px;letter-spacing:.18em}
+  .tile figcaption b{font-size:16px}
+  .rings-row{display:grid!important;grid-template-columns:1fr 1fr;gap:8px}
+  .rings-row .ring-btn{justify-content:start;width:100%}
+  .hero .ticks span{font-size:14px}
+  .band img{object-position:center 40%}
+  .band .wrap{padding-block:32px}
+  .person .who{gap:14px}
+  .person .av{width:60px;height:60px}
+  footer .wrap{gap:26px}
 }
 </style>
 
@@ -665,7 +692,7 @@ html.menu-open,html.menu-open body{overflow:hidden}
 <button type="button" class="ring-btn" data-ring="2" style="--c:#4760B5" aria-pressed="false"><i></i><b>Todo AMBA</b><span>Hasta La Plata</span></button>
 <button type="button" class="ring-btn dash" data-ring="3" aria-pressed="false"><i></i><b>Más lejos</b><span>Consultá disponibilidad</span></button>
 </div>
-<p class="map-note" style="text-align:center">Arrastrá para girar la maqueta, usá + y − o Ctrl + rueda para acercarte, y pasá por cada pin para ver la cobertura.</p>
+<p class="map-note" style="text-align:center"><span class="only-desk">Arrastrá para girar la maqueta, usá + y − o Ctrl + rueda para acercarte, y pasá por cada pin para ver la cobertura.</span><span class="only-mob">Usá + y − para acercarte y tocá cada zona para resaltarla.</span></p>
 </div>
 </section>
 
@@ -1063,7 +1090,7 @@ html.menu-open,html.menu-open body{overflow:hidden}
     /* --- controls --- */
     const controls=new THREE.OrbitControls(camera,renderer.domElement);controls.target.copy(HOME.t);
     controls.enableDamping=true;controls.dampingFactor=0.09;controls.enableZoom=false;controls.screenSpacePanning=false;
-    controls.minPolarAngle=0.3;controls.maxPolarAngle=1.15;controls.minDistance=70;controls.maxDistance=1200;controls.rotateSpeed=0.55;
+    if(window.matchMedia('(max-width:760px)').matches){controls.enableRotate=false;renderer.domElement.style.touchAction='pan-y';}controls.minPolarAngle=0.3;controls.maxPolarAngle=1.15;controls.minDistance=70;controls.maxDistance=1200;controls.rotateSpeed=0.55;
     let pending=false;const proj=new THREE.Vector3(),tmp=new THREE.Vector3();
     function placeLabel(el,v){proj.copy(v).project(camera);const d=camera.position.distanceTo(v);const vis=proj.z<1&&proj.x>-1.02&&proj.x<1.02&&proj.y>-1.02&&proj.y<1.02&&d<1300;el.style.display=vis?'':'none';
       if(vis){el.style.opacity=Math.max(0,Math.min(1,(1400-d)/500));el.style.transform=`translate(-50%,-100%) translate(${((proj.x+1)/2*host.clientWidth).toFixed(1)}px,${((1-proj.y)/2*host.clientHeight).toFixed(1)}px)`;}}
