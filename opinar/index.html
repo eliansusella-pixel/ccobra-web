@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dejá tu reseña | Cuenca Construcciones</title>
+<meta name="description" content="¿Trabajaste con Cuenca Construcciones? Contanos cómo te fue. Te lleva un minuto.">
+<meta name="robots" content="noindex,follow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Cuenca Construcciones">
+<meta property="og:title" content="¿Cómo fue trabajar con Cuenca Construcciones?">
+<meta property="og:description" content="Dejanos tu reseña: te lleva un minuto y ayuda a otros vecinos a elegir.">
+<meta property="og:url" content="https://ccobra.com.ar/opinar/">
+<meta property="og:image" content="https://ccobra.com.ar/img/obras/g04.jpg">
+<meta name="theme-color" content="#13213D">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/css/servicio.css">
+<link rel="stylesheet" href="/css/resenas.css">
+</head>
+<body class="rs-root">
+<header class="nav"><div class="wrap">
+<a class="brand" href="/" aria-label="Cuenca Construcciones, inicio"><svg width="36" height="36" viewBox="0 0 64 64" aria-hidden="true"><polygon points="17,21 33,11 33,37 17,47" fill="#2E4C80"/><polygon points="17,47 34,47 50,37 33,37" fill="#839FB5"/><polygon points="10,14 26,4 50,4 34,14" fill="#47A6B5"/><polygon points="34,14 50,4 50,11 34,21" fill="#4760B5"/><polygon points="34,47 50,37 50,44 34,54" fill="#4760B5"/><path d="M10 14 H34 V21 H17 V47 H34 V54 H10 Z" fill="#4682B4"/></svg><span><b>CUENCA</b><small>CONSTRUCCIONES</small></span></a>
+<a class="btn btn-line" href="/resenas/">Ver reseñas</a>
+</div></header>
+
+<main class="op-main"><div class="wrap">
+<div class="op-box" id="box">
+<form id="f" novalidate>
+<h1 id="titulo">¿Cómo fue trabajar con nosotros?</h1>
+<p class="op-sub">Tu opinión ayuda a otros vecinos a elegir. Te lleva un minuto.</p>
+
+<fieldset class="op-rate">
+<legend class="op-q">Tu calificación</legend>
+<div class="op-starbox" id="stars"></div>
+<p class="op-rlabel" id="rlabel" aria-live="polite"></p>
+</fieldset>
+
+<div class="op-field">
+<label class="op-q" for="nombre">Tu nombre</label>
+<input type="text" id="nombre" name="nombre" maxlength="60" autocomplete="name" autocapitalize="words" placeholder="Ej.: Laura G." required>
+<div class="op-hint"><span>Así va a aparecer. Podés poner nombre e inicial del apellido.</span></div>
+</div>
+
+<div class="op-field">
+<label class="op-q" for="comentario">Tu reseña</label>
+<textarea id="comentario" name="comentario" maxlength="800" placeholder="¿Qué trabajo hicimos? ¿Cómo fue la atención, los tiempos y la terminación?" required></textarea>
+<div class="op-hint"><span id="tip">Mínimo 10 caracteres.</span><span id="cnt">0/800</span></div>
+</div>
+
+<div class="op-field">
+<span class="op-q" id="lserv">¿Qué trabajo hicimos? <small style="text-transform:none;letter-spacing:0;font-weight:500">(opcional)</small></span>
+<div class="op-chips" id="chips" role="group" aria-labelledby="lserv"></div>
+</div>
+
+<div class="op-field">
+<label class="op-q" for="zona">Barrio o localidad <small style="text-transform:none;letter-spacing:0;font-weight:500">(opcional)</small></label>
+<input type="text" id="zona" name="zona" maxlength="40" autocomplete="address-level2" placeholder="Ej.: Olivos">
+</div>
+
+<div class="op-hp" aria-hidden="true"><label for="web">No completar</label><input type="text" id="web" name="web" tabindex="-1" autocomplete="off"></div>
+
+<p class="op-err" id="err" role="alert"></p>
+<button class="btn btn-main op-send" id="send" type="submit">Publicar mi reseña</button>
+<p class="op-legal">Revisamos cada reseña antes de publicarla. Solo se muestran tu nombre, tu calificación y tu comentario.</p>
+</form>
+</div>
+</div></main>
+
+<footer><div class="wrap">
+<p><b>Cuenca Construcciones</b> · Obras, refacciones e instalaciones en CABA y Zona Norte · <a href="tel:+5491164499671">11 6449-9671</a></p>
+<p><a href="https://www.instagram.com/ccobra.ar/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.tiktok.com/@cuenca_construcciones" target="_blank" rel="noopener">TikTok</a> · <a href="/resenas/">Reseñas</a> · <a href="/">Volver al inicio</a></p>
+</div></footer>
+
+<script src="/js/resenas.js"></script>
+<script>
+(function () {
+  var R = window.CCResenas;
+  var SERVICIOS = ['Obra desde cero', 'Refacción', 'Pintura', 'Revestimientos', 'Plomería', 'Electricidad', 'Instalación de aires', 'Hidrolavado de tejas'];
+  var ETIQUETAS = ['', 'Muy malo', 'Malo', 'Estuvo bien', 'Muy bueno', '¡Excelente!'];
+  var STAR = 'M12 2.8l2.83 5.73 6.32.92-4.57 4.46 1.08 6.3L12 17.24l-5.66 2.97 1.08-6.3L2.85 9.45l6.32-.92z';
+  var q = new URLSearchParams(location.search);
+  var f = document.getElementById('f'), box = document.getElementById('stars'), rlabel = document.getElementById('rlabel');
+  var nombre = document.getElementById('nombre'), com = document.getElementById('comentario'), zona = document.getElementById('zona');
+  var err = document.getElementById('err'), send = document.getElementById('send'), cnt = document.getElementById('cnt');
+  var valor = 0, servicio = '';
+
+  // Estrellas grandes (radios accesibles)
+  var labels = [];
+  for (var i = 1; i <= 5; i++) {
+    var inp = document.createElement('input');
+    inp.type = 'radio'; inp.name = 'estrellas'; inp.value = i; inp.id = 'e' + i;
+    var lb = document.createElement('label');
+    lb.htmlFor = 'e' + i;
+    lb.setAttribute('aria-label', i + (i === 1 ? ' estrella' : ' estrellas') + ': ' + ETIQUETAS[i]);
+    lb.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + STAR + '"/></svg>';
+    box.appendChild(inp); box.appendChild(lb); labels.push(lb);
+    (function (n, l) {
+      inp.addEventListener('change', function () { elegir(n); l.classList.remove('bump'); void l.offsetWidth; l.classList.add('bump'); });
+      l.addEventListener('mouseenter', function () { pintar(n); });
+    })(i, lb);
+  }
+  box.addEventListener('mouseleave', function () { pintar(valor); });
+  function pintar(n) { labels.forEach(function (l, k) { l.classList.toggle('lit', k < n); }); }
+  function elegir(n) { valor = n; pintar(n); rlabel.textContent = ETIQUETAS[n]; err.textContent = ''; }
+
+  // Trabajo realizado (chips)
+  var chips = document.getElementById('chips');
+  SERVICIOS.forEach(function (s) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.textContent = s; b.setAttribute('aria-pressed', 'false');
+    b.addEventListener('click', function () {
+      servicio = servicio === s ? '' : s;
+      Array.prototype.forEach.call(chips.children, function (x) { x.setAttribute('aria-pressed', x.textContent === servicio ? 'true' : 'false'); });
+    });
+    chips.appendChild(b);
+  });
+
+  // Datos que puede traer el link que manda el dueño: ?n=Nombre&s=Pintura&z=Olivos
+  if (q.get('n')) nombre.value = q.get('n').slice(0, 60);
+  if (q.get('z')) zona.value = q.get('z').slice(0, 40);
+  if (q.get('s')) {
+    var pedido = q.get('s').toLowerCase();
+    var hit = SERVICIOS.filter(function (s) { return s.toLowerCase() === pedido || s.toLowerCase().indexOf(pedido) === 0; })[0];
+    if (hit) { servicio = hit; Array.prototype.forEach.call(chips.children, function (x) { x.setAttribute('aria-pressed', x.textContent === hit ? 'true' : 'false'); }); }
+  }
+  if (q.get('n')) document.getElementById('titulo').textContent = '¡Hola, ' + q.get('n').split(' ')[0].slice(0, 30) + '! ¿Cómo fue trabajar con nosotros?';
+
+  com.addEventListener('input', function () { cnt.textContent = com.value.length + '/800'; });
+
+  var MENSAJES = {
+    estrellas: 'Elegí de 1 a 5 estrellas.',
+    nombre: 'Poné tu nombre (al menos 2 letras).',
+    comentario: 'Contanos un poco más: al menos 10 caracteres.',
+    limite: 'Ya recibimos varias reseñas desde esta conexión. Probá de nuevo en un rato.'
+  };
+
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    err.textContent = '';
+    if (document.getElementById('web').value) return gracias(nombre.value);
+    var n = nombre.value.trim(), c = com.value.trim();
+    if (!valor) { err.textContent = MENSAJES.estrellas; box.querySelector('input').focus(); return; }
+    if (n.length < 2) { err.textContent = MENSAJES.nombre; nombre.focus(); return; }
+    if (c.length < 10) { err.textContent = MENSAJES.comentario; com.focus(); return; }
+    send.disabled = true; send.textContent = 'Enviando…';
+    R.rpc('ccobra_dejar_resena', { p_nombre: n, p_estrellas: valor, p_comentario: c, p_servicio: servicio || null, p_zona: zona.value.trim() || null })
+      .then(function () { gracias(n); })
+      .catch(function (x) {
+        err.textContent = MENSAJES[x.code] || 'No se pudo enviar. Revisá tu conexión y probá de nuevo.';
+        send.disabled = false; send.textContent = 'Publicar mi reseña';
+      });
+  });
+
+  function gracias(n) {
+    var nom = String(n || '').trim().split(' ')[0];
+    var d = document.getElementById('box');
+    d.innerHTML = '<div class="op-ok"><svg class="op-check" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="45"/><path d="M30 52l14 14 27-30"/></svg>' +
+      '<h1 tabindex="-1"></h1><p>Recibimos tu reseña. La publicamos apenas la revisemos, en general en el día.</p>' +
+      '<div class="btns"><a class="btn btn-main" href="https://www.instagram.com/ccobra.ar/" target="_blank" rel="noopener">Seguinos en Instagram</a><a class="btn btn-line" href="/resenas/">Ver otras reseñas</a></div></div>';
+    var h = d.querySelector('h1');
+    h.textContent = nom ? '¡Gracias, ' + nom + '!' : '¡Gracias!';
+    h.focus();
+    window.scrollTo(0, 0);
+  }
+})();
+</script>
+</body>
+</html>

@@ -17,6 +17,8 @@
 <meta property="og:url" content="https://ccobra.com.ar/">
 <meta name="theme-color" content="#13213D">
 <meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://ubktodtzqlskkhlwlcen.supabase.co" crossorigin>
+<link rel="stylesheet" href="/css/resenas.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Inter:wght@300;400;500;600&display=swap">
 <style>
 /* Layout: sitio de una sola columna, bandas alternadas niebla / azul profundo, contenedor 1240px con gutter seguro */
@@ -591,7 +593,7 @@ html.menu-open,html.menu-open body{overflow:hidden}
 <span><b>CUENCA</b><small>CONSTRUCCIONES</small></span>
 </a>
 <nav class="menu" aria-label="Secciones">
-<a href="#diferencial">Por qué Cuenca</a><a href="#servicios">Servicios</a><a href="#metodo">Método</a><a href="#zonas">Cobertura</a><a href="#nosotros">Nosotros</a>
+<a href="#diferencial">Por qué Cuenca</a><a href="#servicios">Servicios</a><a href="#metodo">Método</a><a href="#zonas">Cobertura</a><a href="#nosotros">Nosotros</a><a href="#resenas">Reseñas</a>
 </nav>
 <div class="nav-right">
 
@@ -601,7 +603,7 @@ html.menu-open,html.menu-open body{overflow:hidden}
 </div>
 </div>
 </header>
-<nav class="mnav" id="mnav" aria-label="Menú"><a href="#diferencial">Por qué Cuenca</a><a href="#servicios">Servicios</a><a href="#metodo">Método</a><a href="#trabajos">Trabajos</a><a href="#zonas">Cobertura</a><a href="#nosotros">Nosotros</a><a class="btn btn-main" href="#contacto">Pedí tu presupuesto</a></nav>
+<nav class="mnav" id="mnav" aria-label="Menú"><a href="#diferencial">Por qué Cuenca</a><a href="#servicios">Servicios</a><a href="#metodo">Método</a><a href="#trabajos">Trabajos</a><a href="#zonas">Cobertura</a><a href="#nosotros">Nosotros</a><a href="#resenas">Reseñas</a><a class="btn btn-main" href="#contacto">Pedí tu presupuesto</a></nav>
 
 <main id="inicio">
 
@@ -724,6 +726,28 @@ html.menu-open,html.menu-open body{overflow:hidden}
 
 
 
+<section class="rs-home rs-root" id="resenas" data-rs="home">
+<div class="wrap">
+<div class="rs-head">
+<div class="sec-head rs-headtxt" style="margin-bottom:0"><span class="vol" data-rv>Reseñas</span><h2>Lo que dicen nuestros clientes.</h2></div>
+<div class="rs-score" aria-label="Calificación promedio"><b data-rs-avg>5,0</b><span><span data-rs-stars></span><span data-rs-count></span></span></div>
+</div>
+<div class="rs-car" aria-roledescription="carrusel" aria-label="Reseñas de clientes">
+<div class="rs-stage"></div>
+<div class="rs-ctrl">
+<button type="button" class="rs-arrow rs-prev" aria-label="Reseña anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+<button type="button" class="rs-arrow rs-next" aria-label="Reseña siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+<div class="rs-dots"></div>
+<button type="button" class="rs-pause" aria-pressed="false" aria-label="Pausar reseñas"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z"/></svg></button>
+</div>
+<div class="rs-bar" aria-hidden="true"><i></i></div>
+</div>
+<div class="rs-cinta" aria-label="Más reseñas"></div>
+<div class="rs-actions"><a class="btn btn-main" href="/resenas/">Ver todas las reseñas</a><a class="btn btn-line" href="/opinar/">Dejá tu reseña</a></div>
+<div class="rs-invite"><p><b>¿Hiciste una obra con nosotros?</b> Contanos cómo te fue: tu opinión ayuda a otros vecinos a elegir.</p><a class="btn btn-main" href="/opinar/">Dejá tu reseña</a></div>
+</div>
+</section>
+
 <section class="cta" id="contacto">
 <canvas id="coats" aria-hidden="true"></canvas>
 <div class="grid-bg" aria-hidden="true"></div>
@@ -752,7 +776,7 @@ html.menu-open,html.menu-open body{overflow:hidden}
 <div><a class="brand" href="#inicio" style="color:var(--niebla)"><svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true"><polygon points="17,21 33,11 33,37 17,47" fill="#2E4C80"></polygon><polygon points="17,47 34,47 50,37 33,37" fill="#839FB5"></polygon><polygon points="10,14 26,4 50,4 34,14" fill="#47B59F"></polygon><polygon points="34,14 50,4 50,11 34,21" fill="#47A6B5"></polygon><polygon points="34,47 50,37 50,44 34,54" fill="#47A6B5"></polygon><path d="M10 14 H34 V21 H17 V47 H34 V54 H10 Z" fill="#EEF2F6"></path></svg><span><b>CUENCA</b><small style="color:var(--gris)">CONSTRUCCIONES</small></span></a>
 <div class="rule6" aria-hidden="true"><i style="background:#4760B5"></i><i style="background:#4682B4"></i><i style="background:#47A6B5"></i><i style="background:#47B59F"></i><i style="background:#839FB5"></i><i style="background:#5047B5"></i></div></div>
 <div><h4>Servicios</h4><ul><li><a href="/construccion/">Obras desde cero</a></li><li><a href="/refacciones/">Refacciones</a></li><li><a href="/pintura/">Pintura</a></li><li><a href="/revestimientos/">Revestimientos</a></li><li><a href="/plomeria/">Plomería</a></li><li><a href="/electricidad/">Electricidad</a></li><li><a href="/instalacion-de-aires/">Instalación de aires</a></li><li><a href="/hidrolavado-de-tejas/">Hidrolavado de tejas</a></li></ul></div>
-<div><h4>Zonas</h4><ul><li><a href="/zonas/caba/">CABA</a></li><li><a href="/zonas/vicente-lopez/">Vicente López</a></li><li><a href="/zonas/olivos/">Olivos</a></li><li><a href="/zonas/martinez/">Martínez</a></li><li><a href="/zonas/san-isidro/">San Isidro</a></li><li><a href="/zonas/tigre/">Tigre</a></li><li><a href="/zonas/nordelta/">Nordelta</a></li><li><a href="/zonas/san-martin/">San Martín</a></li><li><a href="/zonas/villa-ballester/">Villa Ballester</a></li><li><a href="/zonas/don-torcuato/">Don Torcuato</a></li></ul></div><div><h4>Redes</h4><ul><li><a href="https://www.instagram.com/ccobra.ar/" target="_blank" rel="noopener">Instagram · @ccobra.ar</a></li><li><a href="https://www.tiktok.com/@cuenca_construcciones" target="_blank" rel="noopener">TikTok · @cuenca_construcciones</a></li><li>Facebook · Cuenca Construcciones</li></ul></div>
+<div><h4>Zonas</h4><ul><li><a href="/zonas/caba/">CABA</a></li><li><a href="/zonas/vicente-lopez/">Vicente López</a></li><li><a href="/zonas/olivos/">Olivos</a></li><li><a href="/zonas/martinez/">Martínez</a></li><li><a href="/zonas/san-isidro/">San Isidro</a></li><li><a href="/zonas/tigre/">Tigre</a></li><li><a href="/zonas/nordelta/">Nordelta</a></li><li><a href="/zonas/san-martin/">San Martín</a></li><li><a href="/zonas/villa-ballester/">Villa Ballester</a></li><li><a href="/zonas/don-torcuato/">Don Torcuato</a></li></ul></div><div><h4>Redes</h4><ul><li><a href="/resenas/">Reseñas de clientes</a></li><li><a href="/opinar/">Dejá tu reseña</a></li><li><a href="https://www.instagram.com/ccobra.ar/" target="_blank" rel="noopener">Instagram · @ccobra.ar</a></li><li><a href="https://www.tiktok.com/@cuenca_construcciones" target="_blank" rel="noopener">TikTok · @cuenca_construcciones</a></li><li>Facebook · Cuenca Construcciones</li></ul></div>
 <div class="legal"><span>Cuenca Construcciones · CABA + Zona Norte</span><span>© 2026 Cuenca Construcciones</span></div>
 </div>
 </footer>
@@ -1178,4 +1202,5 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)})
 var w=document.getElementById('wabar'),c=document.getElementById('contacto'),hero=document.querySelector('.hero'),inC=false,inH=true;
 function upd(){w.classList.toggle('off',inC||inH)}
 if('IntersectionObserver' in window){new IntersectionObserver(function(e){inC=e[0].isIntersecting;upd()},{threshold:.15}).observe(c);new IntersectionObserver(function(e){inH=e[0].isIntersecting;upd()},{rootMargin:'-60% 0px 0px 0px'}).observe(hero)}else{w.classList.remove('off')}})();</script>
+<script src="/js/resenas.js" defer></script>
 </body></html>

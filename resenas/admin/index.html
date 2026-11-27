@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Panel de reseñas | Cuenca Construcciones</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#13213D">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/css/servicio.css">
+<link rel="stylesheet" href="/css/resenas.css">
+</head>
+<body class="rs-root">
+<header class="nav"><div class="wrap">
+<a class="brand" href="/" aria-label="Cuenca Construcciones, inicio"><svg width="36" height="36" viewBox="0 0 64 64" aria-hidden="true"><polygon points="17,21 33,11 33,37 17,47" fill="#2E4C80"/><polygon points="17,47 34,47 50,37 33,37" fill="#839FB5"/><polygon points="10,14 26,4 50,4 34,14" fill="#47A6B5"/><polygon points="34,14 50,4 50,11 34,21" fill="#4760B5"/><polygon points="34,47 50,37 50,44 34,54" fill="#4760B5"/><path d="M10 14 H34 V21 H17 V47 H34 V54 H10 Z" fill="#4682B4"/></svg><span><b>CUENCA</b><small>CONSTRUCCIONES</small></span></a>
+<a class="btn btn-line" href="/resenas/" target="_blank" rel="noopener">Ver la web</a>
+</div></header>
+
+<main class="ad-main"><div class="wrap">
+
+<div class="ad-login" id="login" hidden>
+<h1 style="font-size:28px">Panel de reseñas</h1>
+<p style="color:var(--txt);margin:10px 0 0">Abrí el link que te pasamos o pegá tu clave.</p>
+<form id="flogin"><input type="password" id="clave" autocomplete="current-password" aria-label="Clave" placeholder="Clave"><p class="op-err" id="lerr" role="alert"></p><button class="btn btn-main" style="width:100%" type="submit">Entrar</button></form>
+</div>
+
+<div id="panel" hidden>
+<div class="ad-top">
+<div><span class="op-q" style="margin-bottom:6px">Panel del dueño</span><h1>Reseñas</h1></div>
+<button class="btn btn-line" type="button" id="refrescar">Actualizar</button>
+</div>
+
+
+
+<div class="ad-tabs" role="group" aria-label="Filtrar">
+<button type="button" data-t="pendiente" aria-pressed="true">Por revisar <b id="c-pendiente">0</b></button>
+<button type="button" data-t="aprobada" aria-pressed="false">Publicadas <b id="c-aprobada">0</b></button>
+<button type="button" data-t="rechazada" aria-pressed="false">Rechazadas <b id="c-rechazada">0</b></button>
+</div>
+<div class="ad-list" id="list" aria-live="polite"></div>
+<section class="ad-pedir" aria-labelledby="tpedir">
+<h2 id="tpedir">Pedirle una reseña a un cliente</h2>
+<p>Completá el nombre y el trabajo (opcional) y mandale el link por WhatsApp. Le llega con todo listo para que solo ponga las estrellas y el comentario.</p>
+<div class="row">
+<input type="text" id="pn" maxlength="60" placeholder="Nombre del cliente (opcional)" aria-label="Nombre del cliente">
+<select id="ps" aria-label="Trabajo realizado"><option value="">Trabajo (opcional)</option><option>Obra desde cero</option><option>Refacción</option><option>Pintura</option><option>Revestimientos</option><option>Plomería</option><option>Electricidad</option><option>Instalación de aires</option><option>Hidrolavado de tejas</option></select>
+</div>
+<div class="ad-btns"><button type="button" class="wa" id="pwa">Mandar por WhatsApp</button><button type="button" id="pcopy">Copiar link</button></div>
+<p class="ad-link" id="plink"></p>
+</section>
+</div>
+</div></main>
+<div class="ad-toast" id="toast" role="status"></div>
+
+<script src="/js/resenas.js"></script>
+<script>
+(function () {
+  var R = window.CCResenas;
+  var LS = 'cc-resenas-clave';
+  var clave = '';
+  var tab = 'pendiente', todas = [];
+  var $ = function (id) { return document.getElementById(id); };
+
+  // La clave llega en el link (#k=...), se guarda en este celular y se borra de la barra de direcciones
+  var m = location.hash.match(/k=([A-Za-z0-9_-]+)/);
+  if (m) { clave = m[1]; history.replaceState(null, '', location.pathname); }
+  else { try { clave = localStorage.getItem(LS) || ''; } catch (e) {} }
+
+  function toast(t) {
+    var n = $('toast'); n.textContent = t; n.classList.add('on');
+    clearTimeout(toast.t); toast.t = setTimeout(function () { n.classList.remove('on'); }, 2200);
+  }
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+
+  function cargar(silencioso) {
+    if (!clave) { mostrarLogin(); return Promise.resolve(); }
+    return R.rpc('ccobra_admin_listar', { p_clave: clave }).then(function (rows) {
+      try { localStorage.setItem(LS, clave); } catch (e) {}
+      todas = rows || [];
+      $('login').hidden = true; $('panel').hidden = false;
+      pintar();
+      if (!silencioso) linkPedido();
+    }).catch(function (x) {
+      if (x.code === 'clave') { try { localStorage.removeItem(LS); } catch (e) {} clave = ''; mostrarLogin('La clave no es correcta.'); }
+      else if (!silencioso) toast('Sin conexión. Probá de nuevo.');
+    });
+  }
+  function mostrarLogin(msg) { $('panel').hidden = true; $('login').hidden = false; $('lerr').textContent = msg || ''; $('clave').focus(); }
+  $('flogin').addEventListener('submit', function (e) { e.preventDefault(); clave = $('clave').value.trim(); cargar(); });
+
+  function pintar() {
+    ['pendiente', 'aprobada', 'rechazada'].forEach(function (s) { $('c-' + s).textContent = todas.filter(function (r) { return r.estado === s; }).length; });
+    var list = $('list'); list.textContent = '';
+    var ver = todas.filter(function (r) { return r.estado === tab; });
+    if (!ver.length) {
+      list.appendChild(el('div', 'ad-vacio', tab === 'pendiente' ? 'No hay reseñas nuevas para revisar.' : tab === 'aprobada' ? 'Todavía no publicaste ninguna reseña.' : 'No hay reseñas rechazadas.'));
+      return;
+    }
+    ver.forEach(function (r) { list.appendChild(item(r)); });
+  }
+
+  function item(r) {
+    var c = el('article', 'ad-item');
+    var h = el('header');
+    h.appendChild(R.avatar(r.nombre));
+    var t = el('span');
+    t.appendChild(el('b', null, r.nombre));
+    var d = R.detalle(r);
+    var f = new Date(r.creada);
+    t.appendChild(el('small', null, (d ? d + ' · ' : '') + f.toLocaleDateString('es-AR', { day: 'numeric', month: 'short' }) + ' ' + f.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' })));
+    h.appendChild(t);
+    h.appendChild(R.estrellas(r.estrellas));
+    c.appendChild(h);
+    c.appendChild(el('p', null, r.comentario));
+    var b = el('div', 'ad-btns');
+    function boton(txt, cls, estado) {
+      var x = el('button', cls, txt); x.type = 'button';
+      x.addEventListener('click', function () { moderar(r, estado, c, x); });
+      b.appendChild(x);
+    }
+    if (r.estado !== 'aprobada') boton('Aprobar y publicar', 'b-ok', 'aprobada');
+    if (r.estado === 'aprobada') boton('Sacar de la web', 'b-no', 'rechazada');
+    if (r.estado === 'pendiente') boton('Rechazar', 'b-no', 'rechazada');
+    if (r.estado === 'rechazada') boton('Borrar para siempre', 'b-del', 'borrar');
+    c.appendChild(b);
+    return c;
+  }
+
+  function moderar(r, estado, card, btn) {
+    if (estado === 'borrar' && btn.dataset.seguro !== '1') {
+      btn.dataset.seguro = '1'; btn.textContent = 'Tocá de nuevo para borrar';
+      setTimeout(function () { if (btn.isConnected) { btn.dataset.seguro = ''; btn.textContent = 'Borrar para siempre'; } }, 4000);
+      return;
+    }
+    card.querySelectorAll('button').forEach(function (x) { x.disabled = true; });
+    R.rpc('ccobra_admin_moderar', { p_clave: clave, p_id: r.id, p_estado: estado }).then(function () {
+      if (estado === 'borrar') todas = todas.filter(function (x) { return x.id !== r.id; });
+      else r.estado = estado;
+      card.classList.add('out');
+      toast(estado === 'aprobada' ? 'Publicada en la web ✓' : estado === 'borrar' ? 'Reseña borrada' : 'Listo, no se muestra en la web');
+      setTimeout(pintar, 280);
+    }).catch(function () {
+      card.querySelectorAll('button').forEach(function (x) { x.disabled = false; });
+      toast('No se pudo guardar. Probá de nuevo.');
+    });
+  }
+
+  document.querySelector('.ad-tabs').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    tab = b.dataset.t;
+    Array.prototype.forEach.call(this.children, function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    pintar();
+  });
+  $('refrescar').addEventListener('click', function () { cargar(true).then(function () { toast('Actualizado'); }); });
+  document.addEventListener('visibilitychange', function () { if (!document.hidden && clave) cargar(true); });
+  setInterval(function () { if (!document.hidden && clave) cargar(true); }, 60000);
+
+  // Link para pedir reseña
+  function linkPedido() {
+    var u = new URL('/opinar/', location.origin);
+    if ($('pn').value.trim()) u.searchParams.set('n', $('pn').value.trim());
+    if ($('ps').value) u.searchParams.set('s', $('ps').value);
+    $('plink').textContent = u.href;
+    return u.href;
+  }
+  function mensaje() {
+    var n = $('pn').value.trim().split(' ')[0];
+    return '¡Hola' + (n ? ' ' + n : '') + '! Gracias por confiar en Cuenca Construcciones. ¿Nos dejás tu opinión? Te lleva un minuto y nos ayuda muchísimo: ' + linkPedido();
+  }
+  $('pn').addEventListener('input', linkPedido);
+  $('ps').addEventListener('change', linkPedido);
+  $('pwa').addEventListener('click', function () { window.open('https://wa.me/?text=' + encodeURIComponent(mensaje()), '_blank', 'noopener'); });
+  $('pcopy').addEventListener('click', function () {
+    var t = mensaje();
+    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { toast('Mensaje copiado ✓'); }, function () { toast('Copialo de abajo'); });
+  });
+
+  cargar();
+})();
+</script>
+</body>
+</html>

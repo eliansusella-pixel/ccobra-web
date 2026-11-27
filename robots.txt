@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /resenas/admin/
 
 Sitemap: https://ccobra.com.ar/sitemap.xml
