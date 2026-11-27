@@ -123,7 +123,7 @@
       x.addEventListener('click', function () { moderar(r, estado, c, x); });
       b.appendChild(x);
     }
-    if (r.estado !== 'aprobada') boton('Aprobar y publicar', 'b-ok', 'aprobada');
+    if (r.estado !== 'aprobada') boton('Publicar', 'b-ok', 'aprobada');
     if (r.estado === 'aprobada') boton('Sacar de la web', 'b-no', 'rechazada');
     if (r.estado === 'pendiente') boton('Rechazar', 'b-no', 'rechazada');
     if (r.estado === 'rechazada') boton('Borrar para siempre', 'b-del', 'borrar');

@@ -60,7 +60,7 @@
 .rs-car.paused .rs-pause .i-play{display:block}
 .rs-car.paused .rs-pause .i-pause{display:none}
 .rs-dots{display:flex;gap:8px;flex-wrap:wrap;flex:1;min-width:0}
-.rs-ctrl .rs-dot{width:8px;height:8px;border-radius:99px;background:rgba(255,255,255,.28);transition:width .35s,background .35s;padding:10px 0;background-clip:content-box}
+.rs-ctrl .rs-dot{position:relative;width:8px;height:8px;border-radius:99px;background:rgba(255,255,255,.28);transition:width .35s,background-color .35s}.rs-ctrl .rs-dot::after{content:"";position:absolute;inset:-10px -4px}
 .rs-ctrl .rs-dot[aria-current="true"]{width:28px;background-color:var(--rs-teal)}
 .rs-bar{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.08)}
 .rs-bar i{position:absolute;inset:0;background:var(--rs-teal);transform:scaleX(0);transform-origin:left}
@@ -211,3 +211,5 @@
   .rs-stars.pop svg,.rs-slide.show{animation:none}
 }
 .op-ok h1:focus{outline:none}
+.ad-login .btn{border:0}
+button.btn{border:0;cursor:pointer;font-family:var(--display,"Archivo",sans-serif)}button.btn-line{background:transparent;color:var(--rs-navy)}button.btn-line:hover{background:var(--rs-navy);color:#fff}
